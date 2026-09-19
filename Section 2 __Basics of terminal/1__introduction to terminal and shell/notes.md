@@ -54,3 +54,47 @@ ls -la
 🔑 Meaning
 -l → Long format → shows detailed information
 -a → All → includes hidden files
+
+
+📄 touch Command
+
+touch is used to create a new empty file.
+
+
+📁 mkdir Command
+
+mkdir stands for Make Directory.
+
+
+🔑 1. cp — Copy
+
+cp stands for copy.
+
+Copy to another folder
+cp app.js backup/
+
+
+🔑 2. mv — Move
+
+mv stands for move.
+
+mv app.js backup/
+
+
+🔥 mv can also rename files
+mv old.txt new.txt
+
+
+🗑️ Delete Folder
+1. Empty folder → rmdir
+rmdir folder
+
+
+2. Folder with files → rm -r
+rm -r folder
+
+Example:
+rm -r project
+This deletes the folder and everything inside it.
+
+
