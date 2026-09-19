@@ -98,3 +98,56 @@ rm -r project
 This deletes the folder and everything inside it.
 
 
+cat — view/create file quickly
+
+View a file:
+cat app.js
+
+
+nano — edit a file interactively
+nano app.js
+
+Most important commands   //vim modes
+
+i        → start typing (Insert mode)
+Esc      → go back to Normal mode
+
+x        → delete one character
+dd       → delete current line
+u        → undo
+
+:w       → save
+:q       → quit
+:wq      → save + quit
+:q!      → quit without saving
+
+
+Normal mode  → commands/navigation
+Insert mode  → type/edit text
+Command mode → save/quit/etc.
+
+The purpose of Vim is to create and edit text/code directly from the terminal.
+
+Think of it like VS Code, but completely keyboard/terminal based.
+
+Why use Vim?
+✍️ Edit code/files
+📄 Create text files
+⚡ Very fast once you learn shortcuts
+🖥️ Works inside a terminal/server
+🔧 Useful when you don't have a GUI editor available
+
+
+
+Prompt = input/instruction given to a system to tell it what to do.
+
+
+
+
+
+
+
+
+
+
+
