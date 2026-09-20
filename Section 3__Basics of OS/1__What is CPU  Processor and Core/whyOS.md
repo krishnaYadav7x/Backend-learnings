@@ -1,8 +1,12 @@
-🖥️ What is an Operating System?
+# 🖥️ What is an Operating System?
 
-An Operating System (OS) is software that acts as a bridge between you, applications, and computer hardware.
+An **Operating System (OS)** is software that acts as a **bridge between applications and computer hardware**.
 
-🔄 Simple Flow
+---
+
+## 🔄 Simple Flow
+
+```text
 👨‍💻 Your Code
       ↓
 🟢 Node.js
@@ -10,22 +14,6 @@ An Operating System (OS) is software that acts as a bridge between you, applicat
 🖥️ Operating System
       ↓
 ⚙️ Computer Hardware
-🛠️ What does an OS manage?
-📁 Files & Folders
-🧠 Memory (RAM)
-⚡ CPU
-🔄 Processes
-⌨️ Keyboard & Mouse
-🖨️ Other Devices
-💻 Examples of Operating Systems
-OS	Used On
-🪟 Windows	PCs & Laptops
-🍎 macOS	Mac computers
-🐧 Linux	Servers & PCs
-🤖 Android	Smartphones
-📱 iOS	iPhones
-
-💡 In one line: An Operating System manages the computer's hardware and provides a platform for applications to run.
 
 
 
