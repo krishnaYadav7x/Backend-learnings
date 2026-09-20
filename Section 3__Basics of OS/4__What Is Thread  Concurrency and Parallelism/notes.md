@@ -50,3 +50,23 @@ Process is the container; thread is the worker that performs the work.
 
 I can also create an image showing Process → Threads → CPU visually.
 
+
+🚀 Spawn — simple meaning
+
+Spawn means: “create a new process.”
+
+For example, suppose Node.js is running:
+
+
+
+Concurrency: Multiple tasks make progress by taking turns.
+Parallelism: Multiple tasks run at the same time on multiple CPU cores.
+
+
+
+
+
+
+
+
+
