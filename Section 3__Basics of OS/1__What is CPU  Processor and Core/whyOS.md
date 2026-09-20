@@ -15,8 +15,26 @@ An **Operating System (OS)** is software that acts as a **bridge between applica
       ↓
 ⚙️ Computer Hardware
 
+🛠️ What Does an OS Manage?
 
+📁 Files & Folders
+🧠 Memory (RAM)
+⚡ CPU
+🔄 Processes
+⌨️ Keyboard & Mouse
+🖨️ Other Devices
 
+💡 In one line: An Operating System manages the computer's hardware and provides a platform for applications to run.
+
+💻 Examples of Operating Systems
+
+| 🖥️ Operating System | 📱 Commonly Used On |
+| -------------------- | ------------------- |
+| 🪟 Windows           | PCs & Laptops       |
+| 🍎 macOS             | Mac Computers       |
+| 🐧 Linux             | PCs & Servers       |
+| 🤖 Android           | Smartphones         |
+| 📱 iOS               | iPhones             |
 
 
 
