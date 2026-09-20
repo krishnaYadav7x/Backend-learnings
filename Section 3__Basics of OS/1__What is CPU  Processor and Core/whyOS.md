@@ -1,3 +1,45 @@
+🖥️ What is an Operating System?
+
+An Operating System (OS) is software that acts as a bridge between you, applications, and computer hardware.
+
+🔄 Simple Flow
+👨‍💻 Your Code
+      ↓
+🟢 Node.js
+      ↓
+🖥️ Operating System
+      ↓
+⚙️ Computer Hardware
+🛠️ What does an OS manage?
+📁 Files & Folders
+🧠 Memory (RAM)
+⚡ CPU
+🔄 Processes
+⌨️ Keyboard & Mouse
+🖨️ Other Devices
+💻 Examples of Operating Systems
+OS	Used On
+🪟 Windows	PCs & Laptops
+🍎 macOS	Mac computers
+🐧 Linux	Servers & PCs
+🤖 Android	Smartphones
+📱 iOS	iPhones
+
+💡 In one line: An Operating System manages the computer's hardware and provides a platform for applications to run.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 🖥️ Why Learn OS Basics Before Node.js?
 
 You don't need to master **Operating Systems (OS)** before learning Node.js. You only need the basic OS concepts that Node.js interacts with.
