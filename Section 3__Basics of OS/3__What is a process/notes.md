@@ -1,104 +1,81 @@
-🧩 What is a Process?
+# 🧩 What is a Process?
 
-A process is a program that is currently running.
+A **process** is a **program that is currently running**.
 
-When you open an application, the OS creates one or more processes to execute its work.
+When you open a program, the Operating System creates and manages one or more processes to execute its work.
 
+```text
 📄 Program
     ↓
 ▶️ Start / Open
     ↓
 🧩 Process
     ↓
-🧠 CPU + 🧠 Memory
-
-For example:
-
-🌐 Chrome
-🎵 Spotify
-💻 VS Code
-        ↓
-⚙️ Operating System
-        ↓
-🧩 Processes
+🧠 CPU + Memory
 
 💡 Program = stored instructions
-💡 Process = those instructions being executed
+💡 Process = program currently being executed
 
 🔢 Process ID (PID)
 
-Every process gets a unique Process ID (PID) from the Operating System.
+Every running process gets a Process ID (PID) from the Operating System.
+
+The PID is used to identify a specific process.
 
 🌐 Chrome
-   ↓
+    ↓
 🧩 Chrome Process
-   ↓
+    ↓
 🔢 PID: 4528
-
-The PID helps the OS and system-monitoring tools identify a specific process.
-
 Example
-Process              PID
-──────────────────────────
-Chrome              4528
-VS Code             6312
-Spotify             7840
+Process	PID
+🌐 Chrome	4528
+💻 VS Code	6312
+🎵 Spotify	7840
 
-💡 PID = unique identifier of a process.
+💡 PID = identifier used to identify a running process.
 
-🧬 Process Instances
+🧬 Multiple Processes in One Application
 
-One application can have multiple processes/instances.
+An application can use multiple processes.
 
-For example, Chrome may appear as:
+Modern browsers like Chrome use multiple processes for different types of work.
 
-🌐 Google Chrome
-   ├── 🧩 Process 1
-   ├── 🧩 Process 2
-   ├── 🧩 Process 3
-   ├── 🧩 Process 4
-   └── 🧩 Process 5
+🌐 Chrome
+   │
+   ├── 🧩 Browser Process
+   ├── 🧩 Renderer Process
+   ├── 🧩 GPU Process
+   ├── 🧩 Network Process
+   └── 🧩 Other Processes
 
 That's why Task Manager can show something like:
 
-Google Chrome (15)
+🌐 Google Chrome (15)
 
-The 15 indicates that Windows has grouped 15 Chrome-related processes under Chrome.
+The number indicates that Windows has 15 Chrome-related processes grouped under Chrome.
 
-💡 Opening another tab can cause additional processes or threads to be created, but a new tab does not necessarily mean exactly one new process. Modern browsers use multiple processes for isolation, stability, security, and performance.
+💡 Opening a new tab can cause additional processes or threads to be created, but one tab does not necessarily mean one new process.
 
-🧠 Why Do Applications Use Multiple Processes?
-
-Modern applications, especially browsers, often use multiple processes.
-
-🌐 Chrome
-     │
-     ├── 🧩 Browser Process
-     ├── 🧩 Renderer Process
-     ├── 🧩 GPU Process
-     ├── 🧩 Network Process
-     └── 🧩 Other Processes
-
-This provides benefits such as:
-
-🔒 Isolation & security
-💥 One process crashing may not crash the entire application
+Why Multiple Processes?
+🔒 Isolation & Security
+💥 Better fault isolation — one process crashing may not crash the entire application
 ⚡ Better responsiveness
 🧠 Separate resource management
 💤 Process States
 
-A process does not always use the CPU.
+A process does not continuously use the CPU.
 
-It can be in different states depending on what it is doing.
+Depending on what it is doing, it may be:
 
 🧩 Process
    │
    ├── 🟢 Running
    ├── 🟡 Ready
-   └── 💤 Waiting / Sleeping
+   └── 💤 Waiting
 🟢 Running
 
-The process is currently being executed by a CPU core.
+The process is currently executing on a CPU core.
 
 🧩 Process
     ↓
@@ -111,131 +88,130 @@ The process is ready to run but is waiting for CPU time.
 
 🧩 Process
     ↓
-📋 Ready Queue
+📋 Ready
     ↓
 ⏳ Waiting for CPU
-💤 Waiting / Sleeping
+💤 Waiting
 
-The process is waiting for something, such as:
+The process is waiting for something before it can continue.
 
-💾 I/O operation
+For example:
+
+💾 Disk / I/O operation
 🌐 Network response
 ⌨️ User input
 ⏱️ Timer
-🔒 A required resource
+🔒 Required resource
+🧩 Process
+    ↓
+💤 Waiting
+    ↓
+📥 Event completes
+    ↓
+🟡 Ready
+    ↓
+🧠 CPU
 
-It doesn't need to continuously use the CPU while waiting.
+💡 Waiting/Sleeping does not mean the application is closed. It usually means the process currently has nothing useful to execute until some event or resource becomes available.
 
-💡 Sleeping does not mean the application is closed. It usually means the process is temporarily waiting for something.
+⚡ Processes and CPU
 
-⚡ Process and CPU Usage
-
-Suppose you open many applications:
+Suppose many applications are running:
 
 🌐 Chrome
 🎵 Spotify
 💻 VS Code
 💬 WhatsApp
 📝 Other Apps
-      ↓
-⚙️ OS Scheduler
-      ↓
+        ↓
+⚙️ Operating System
+        ↓
+📅 CPU Scheduler
+        ↓
 🧠 CPU Cores
 
-The OS scheduler decides which ready processes/threads get CPU time.
+The CPU Scheduler decides which runnable processes/threads should get CPU time.
 
-If there is heavy CPU work:
+On a single core, tasks take turns through time slicing and context switching.
 
-🧩 Process A ──┐
-🧩 Process B ──┤
-🧩 Process C ──┼──→ ⚙️ Scheduler → 🧠 CPU
-🧩 Process D ──┤
-🧩 Process E ──┘
+On multiple cores, multiple tasks can execute in parallel.
+
 📊 What Does 100% CPU Mean?
 
 If Task Manager shows:
 
 CPU → 100%
 
-it means the available CPU processing capacity is essentially fully utilized at that moment.
-
-For a multi-core CPU, Windows calculates CPU usage across the available logical processors.
-
-💡 100% CPU does NOT mean every application is individually using 100% CPU.
+it means the available CPU processing capacity is fully utilized at that moment.
 
 For example:
 
-Chrome       → 40%
-VS Code      → 20%
-Other Apps   → 40%
-──────────────────
-Total        → 100%
+🌐 Chrome      → 40%
+💻 VS Code     → 20%
+🎵 Other Tasks → 40%
+────────────────────
+Total          → 100%
 
-The actual numbers depend on what the system is doing.
+💡 100% CPU does not mean every application is using 100% CPU.
+
+CPU usage depends on the workload, number of CPU cores/logical processors, and what the processes are doing.
 
 ⭐ Process Priority
 
-Windows also gives processes different priority levels.
+The OS uses priority information when scheduling competing runnable work.
 
-Priority influences how the scheduler treats competing runnable threads.
+A higher-priority runnable thread may receive preference over lower-priority work.
 
-🧩 Process
-     ↓
-⭐ Priority
-     ↓
-⚙️ Scheduler
-     ↓
-🧠 CPU
+🧩 Process / Thread
+        ↓
+    ⭐ Priority
+        ↓
+⚙️ CPU Scheduler
+        ↓
+     🧠 CPU
 
-A higher-priority runnable thread may be given preference over a lower-priority one.
+⚠️ Priority does not mean a process gets a fixed percentage of CPU.
+For example, High Priority does not mean the process will always use 80% CPU.
 
-⚠️ Important: Priority does not mean a process will permanently get a fixed percentage like 8% CPU. CPU usage depends on the workload, runnable threads, available cores, and scheduler behavior.
+Actual CPU usage depends on the workload and available CPU resources.
 
 👨‍👦 PID vs PPID
 
 A process can also have a Parent Process ID (PPID).
 
-🔢 PID
-
-PID = Process ID
+🔢 PID — Process ID
 
 Identifies the current process.
 
-👨‍👦 PPID
+👨‍👦 PPID — Parent Process ID
 
-PPID = Parent Process ID
-
-Identifies the process that created/started the current process.
+Identifies the process that created the current process.
 
 👨 Parent Process
-      │
-      │ creates
-      ↓
+        │
+        │ creates
+        ↓
 👶 Child Process
-
-Example:
-
-Process           PID       PPID
-────────────────────────────────
-Parent            1000       500
-Child             1250      1000
+Example
+Process	PID	PPID
+Parent	1000	500
+Child	1250	1000
 
 Here:
 
-PID 1000 → Parent
-PID 1250 → Child
-PPID 1000 → Child's parent
+PID 1250  → Child's own ID
+PPID 1000 → Child's parent ID
 
-💡 PID tells you "Who am I?"
-💡 PPID tells you "Who is my parent?"
+💡 PID = Who am I?
+💡 PPID = Who is my parent?
 
 🔍 System Informer
 
 System Informer is an advanced Windows system-monitoring tool.
 
-It gives much more detailed information about processes than the basic Task Manager.
+It provides more detailed process information than the basic Task Manager.
 
-You can inspect things such as:
+You can inspect information such as:
 
 🔢 PID
 👨‍👦 PPID
@@ -243,60 +219,56 @@ You can inspect things such as:
 🧠 Memory Usage
 ⭐ Priority
 🧵 Threads
-📁 Process details
-🔗 Parent-child relationships
-💤 Process activity/state
-
-A simplified view looks like:
-
-                ⚙️ Operating System
-                       │
-                       ↓
-              📋 Process Information
-                       │
-        ┌──────────────┼──────────────┐
-        ↓              ↓              ↓
-      🔢 PID          👨‍👦 PPID       ⚡ CPU
-        ↓              ↓              ↓
-    Process ID    Parent ID       CPU Usage
+🔗 Parent-Child Relationships
+📊 Process Details
+                 ⚙️ Operating System
+                         ↓
+                  📋 Process Information
+                         ↓
+       ┌─────────────────┼─────────────────┐
+       ↓                 ↓                 ↓
+     🔢 PID            👨‍👦 PPID          ⚡ CPU
+       ↓                 ↓                 ↓
+  Process ID        Parent ID        CPU Usage
 🔄 Complete Process Flow
 📄 Program
     ↓
-▶️ User/System starts it
+▶️ Program Starts
     ↓
-🧩 Process is created
+🧩 Process Created
     ↓
-🔢 OS assigns a PID
+🔢 OS Assigns PID
     ↓
-📅 Scheduler manages it
+📅 Scheduler Manages It
     ↓
-┌─────────────────────────────┐
-│                             │
-↓                             │
-🟡 Ready                       │
-↓                             │
-🧠 CPU                         │
-↓                             │
-🟢 Running                     │
-↓                             │
-🔄 Context Switch              │
-│                             │
-└──────→ 💤 Waiting/Sleeping ──┘
-                 ↓
-          Becomes Ready Again
-                 ↓
-              🧠 CPU
-🧠 Remember
+🟡 Ready
+    ↓
+🧠 CPU
+    ↓
+🟢 Running
+    │
+    ├── 🔄 Context Switch → Another Process
+    │
+    └── 💤 Waiting → Event/Resource
+                         ↓
+                      🟡 Ready
+                         ↓
+                      🧠 CPU
+🧠 Quick Revision
+🔑 Term	Simple Meaning
+🧩 Process	A program that is currently running
+🔢 PID	Identifier of a running process
+👨‍👦 PPID	ID of the process that created it
+🟢 Running	Currently executing on a CPU
+🟡 Ready	Ready to run, waiting for CPU time
+💤 Waiting	Waiting for an event/resource
+⭐ Priority	Helps determine scheduling preference
+⚡ CPU 100%	CPU capacity is fully utilized
+🔄 Context Switching	Switching CPU execution between tasks
+🔍 System Informer	Advanced tool for inspecting processes
 
-🔹 Process → A program that is currently running
-🔹 PID → Unique ID of a process
-🔹 PPID → ID of the process that created it
-🔹 Instance → A running occurrence/process associated with an application
-🔹 Running → Currently executing on a CPU core
-🔹 Ready → Waiting for CPU time
-🔹 Waiting/Sleeping → Waiting for an event/resource
-🔹 Priority → Helps the scheduler decide how to treat competing tasks
-🔹 CPU 100% → CPU capacity is fully utilized at that moment
-🔹 System Informer → Advanced tool for inspecting processes and system activity
+🎯 Main Idea:
+When a program starts, the OS creates and manages a process. The process gets a PID, can have a parent process (PPID), moves between states such as Ready, Running, and Waiting, and receives CPU time through the OS scheduler.
 
-🎯 Main Idea: When you open an application, the OS creates and manages one or more processes. Each process has a PID, may have a parent process (PPID), can move between running, ready, and waiting states, and competes for CPU time through the OS scheduler.
+
+**Ek important correction:** `Google Chrome (15)` ko strictly **“15 instances
