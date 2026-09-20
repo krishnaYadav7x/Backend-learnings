@@ -141,9 +141,26 @@ Why use Vim?
 
 Prompt = input/instruction given to a system to tell it what to do.
 
+Important: PS1 doesn't change your actual folder or path. It only changes what is displayed before you type commands.
 
 
+PS2 is the secondary prompt in Bash.
+It appears when Bash expects more input to complete your command.
 
+PS1 vs PS2
+PS1 → normal command prompt
+PS2 → continuation prompt
+
+
+.bashrc is used for commands/configuration that you want Bash to run automatically when an interactive Bash shell starts.
+
+
+What is the source command?
+
+The source command reads and executes a file in the current shell.
+
+For example:
+source ~/.bashrc
 
 
 
