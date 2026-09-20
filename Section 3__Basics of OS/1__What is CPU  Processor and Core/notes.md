@@ -252,3 +252,59 @@ Executed by a CPU core
 🎯 Key Takeaway
 
 A CPU/Processor is the overall processing chip, while a Core is an individual processing unit inside the CPU. Multiple cores allow a CPU to work on multiple tasks concurrently.
+
+
+
+
+
+
+
+
+🖥️ OS — Where Is It Used?
+
+Think of it like:
+
+App → Process → Threads → OS → CPU Cores
+
+| Concept                  | What OS does                                    |
+| ------------------------ | ----------------------------------------------- |
+| 📱 **Start App**         | Creates a process and gives it resources        |
+| ⚙️ **Process**           | Creates, manages, and terminates processes      |
+| 🧵 **Threads**           | Manages threads and decides when they run       |
+| ⏱️ **Scheduling**        | Decides which thread gets CPU time              |
+| 🔄 **Context Switching** | Switches CPU from one thread/process to another |
+| 🧠 **Memory**            | Allocates and manages memory for processes      |
+| 💾 **I/O**               | Manages files, disks, keyboard, mouse, etc.     |
+| 🌐 **Network**           | Provides networking services to applications    |
+| 🚀 **`spawn()`**         | Helps create/start a new process                |
+
+
+🧵 Threads + CPU
+1 Core
+OS → T1 → T2 → T3 → T1
+
+OS switches between threads → Concurrency
+
+Multiple Cores
+OS
+├── Core 1 → T1
+├── Core 2 → T2
+├── Core 3 → T3
+└── Core 4 → T4
+
+Threads execute at the same time → Parallelism
+
+🔑 Remember
+
+OS = Manager
+Scheduler = Decides
+Thread = Unit of work
+Core = Executes
+Concurrency = Switching/progress together
+Parallelism = Actually running together
+
+
+
+
+
+
