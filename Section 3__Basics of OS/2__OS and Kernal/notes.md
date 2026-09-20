@@ -1,167 +1,189 @@
-⚙️ What is a Kernel?
+# ⚙️ What is a Kernel?
 
-A Kernel is the core part of an Operating System.
+A **Kernel** is the **core part of an Operating System (OS)**.
 
-It acts as a bridge between software and hardware.
+It acts as a bridge between **software and hardware**.
 
+```text
 💻 Applications
-      ↓
+       ↓
 ⚙️ Kernel
-      ↓
+       ↓
 🖥️ Hardware
-
-🧠 What does the Kernel do?
-
+🧠 What Does the Kernel Do?
 🧠 Manages Memory
 ⚡ Manages CPU
 🔄 Manages Processes
-📁 Helps manage Files
+📁 Helps Manage Files
 ⌨️ Communicates with Hardware Devices
 
 💡 In one line: The Kernel is the core of the OS that manages hardware and allows software to use it.
 
+🔄 Context Switching
 
+When multiple applications are running, the Operating System (OS) manages which process gets CPU time.
 
+Think of the OS as a middleman between applications and the processor.
 
-
-
-🔄 Context Switching — How Multiple Apps Run on One CPU
-
-When multiple applications are running, the Operating System (OS) manages which application gets CPU time.
-
-Think of it as a middleman between applications and the processor.
-
-┌──────────────────┐      ┌────────────────────┐      ┌──────────────────┐
-│   💻 APPS        │      │    ⚙️ OPERATING    │      │   🧠 PROCESSOR   │
-│                  │      │      SYSTEM        │      │                  │
-│ 🌐 Chrome        │ ───→ │  📅 Scheduler      │ ───→ │    ⚡ CPU Core   │
-│ 🎵 Spotify       │      │        ↕           │      │                  │
-│ 💻 VS Code       │ ←─── │ 🔄 Context Switch │ ←─── │    Executes      │
-│ 💬 WhatsApp      │      │        ↕           │      │    instructions  │
-└──────────────────┘      └────────────────────┘      └──────────────────┘
+💻 APPLICATIONS
+      │
+      │  Requests CPU time
+      ↓
+⚙️ OPERATING SYSTEM
+      │
+      ├── 📅 CPU Scheduler
+      │
+      └── 🔄 Context Switching
+      │
+      ↓
+🧠 PROCESSOR / CPU
+      │
+      └── ⚡ Executes instructions
 ⏱️ What Happens on a Single Core?
 
-Suppose Chrome, Spotify, and VS Code are running, but there is only one CPU core.
-
-The CPU cannot execute all three at exactly the same moment.
-
-Instead:
+Suppose these applications are running:
 
 🌐 Chrome
-    ↓
-⚙️ OS gives CPU time
-    ↓
-🧠 CPU executes
-    ↓
-🔄 Context Switch
-    ↓
 🎵 Spotify
-    ↓
-⚙️ OS gives CPU time
-    ↓
-🧠 CPU executes
-    ↓
-🔄 Context Switch
-    ↓
 💻 VS Code
-    ↓
-⚙️ OS gives CPU time
-    ↓
-🧠 CPU executes
-    ↓
-🔄 Context Switch
-    ↓
-🌐 Chrome
-    ↓
-      ...
+
+But the computer has only one CPU core.
+
+A single CPU core can execute one instruction stream at a time.
+
+So the OS gives different processes/threads small amounts of CPU time.
+
+🧠 CPU Core
+
+Chrome → Spotify → VS Code → Chrome → Spotify → VS Code
+   ↑         ↑         ↑
+   │         │         │
+ Small     Small     Small
+ time      time      time
+ slice     slice     slice
+
+This happens extremely quickly, so it looks like all applications are running at the same time.
+
 🔄 What is Context Switching?
 
-Context switching means:
+Context switching means switching the CPU from one process/thread to another.
 
-The CPU stops working on one process/thread and switches to another.
-
-Before switching, the OS saves the current task's execution state, then loads the next task's state.
+Before switching, the OS saves the current task's execution state and then loads the next task's state.
 
 🧩 Chrome
-   ↓
+    ↓
 💾 Save Chrome's state
-   ↓
+    ↓
 🔄 Context Switch
-   ↓
+    ↓
 📂 Load Spotify's state
-   ↓
+    ↓
 🧩 Spotify runs
 
 Later:
 
 🧩 Spotify
-   ↓
+    ↓
 💾 Save Spotify's state
-   ↓
+    ↓
 🔄 Context Switch
-   ↓
+    ↓
 📂 Load Chrome's state
-   ↓
+    ↓
 🧩 Chrome continues
 
-This lets Chrome continue from where it left off.
+This allows Chrome to continue from where it left off.
 
-⚡ How Does the CPU Switch So Fast?
+💡 The CPU is not physically "taking out" one application and putting another one inside.
+The CPU executes instructions from different processes/threads, while the OS manages the switching.
 
-The OS doesn't give an application a huge amount of time.
+⚡ How Does It Switch So Fast?
 
-It gives runnable tasks small time slices.
+The OS gives runnable processes/threads small time slices.
 
 🧠 CPU Core
 
 | Chrome | Spotify | VS Code | Chrome | Spotify | VS Code |
-     ↑         ↑          ↑
-   tiny      tiny       tiny
-   slice     slice      slice
+    ↑         ↑         ↑
+  Small     Small     Small
+  slice     slice     slice
 
-These operations happen extremely quickly.
+The switching happens very quickly:
 
-So from our perspective:
-
-👀 User sees:
-
+Chrome
+   ↓
+🔄
+Spotify
+   ↓
+🔄
+VS Code
+   ↓
+🔄
+Chrome
+   ↓
+🔄
+Spotify
+   ↓
+...
+👀 What We See
 🌐 Chrome + 🎵 Spotify + 💻 VS Code
-          ↓
-     "All running!"
-
-🧠 CPU is actually doing:
-
+                ↓
+       "Everything is running!"
+🧠 What the CPU Is Actually Doing
 Chrome → Spotify → VS Code → Chrome → Spotify → ...
-             🔄 🔄 🔄
-
-💡 Important: Don't think of it as the CPU physically "taking out" an app and putting another app inside. The CPU executes instructions from different processes/threads, while the OS manages the switching between them.
-
+   🔄         🔄         🔄         🔄
 🎯 Complete Flow
-        💻 APPLICATIONS
-   ┌────────┬────────┬────────┐
-   │ Chrome │Spotify │ VS Code│
-   └────────┴────────┴────────┘
-              ↓
-              ↓
-       ⚙️ OPERATING SYSTEM
-              ↓
-       📅 CPU Scheduler
-              ↓
-       ⏱️ Time Slice
-              ↓
-        🔄 Context Switch
-              ↓
-          🧠 CPU Core
-              ↓
-          ⚡ Execute
-              ↓
-        🔄 Context Switch
-              ↓
-       🧠 Another Task
-              ↓
-             ...
+💻 Applications
+       ↓
+🧩 Processes / Threads
+       ↓
+⚙️ Operating System
+       ↓
+📅 CPU Scheduler
+       ↓
+⏱️ Time Slice
+       ↓
+🔄 Context Switch
+       ↓
+🧠 CPU Core
+       ↓
+⚡ Execute Instructions
+       ↓
+🔄 Context Switch
+       ↓
+🧠 Another Process/Thread
+       ↓
+      ...
 🧠 Remember
+💻 Apps
+   ↓
+⚙️ OS / Kernel
+   ↓
+📅 Scheduler
+   ↓
+⏱️ Time Slice
+   ↓
+🧠 CPU
+   ↓
+⚡ Execute
+   ↓
+🔄 Context Switch
+   ↓
+🧠 Another Task
+   ↓
+      ...
 
-Apps → OS/Scheduler → CPU → Execute → Context Switch → Another Task → CPU
+🚀 Main Idea: Even with a single CPU core, multiple applications can appear to run simultaneously because the OS rapidly schedules tasks, gives them small time slices, and performs context switching.
 
-This happens very rapidly, which is why many applications can appear to run simultaneously even when there is only one CPU core.
+
+### ✨ One important correction
+
+Instead of writing:
+
+> `OS manages which application gets CPU time`
+
+for technical notes, **`OS manages which process/thread gets CPU time`** is better.
+
+Because **Chrome is an application**, while the CPU actually executes instructions belonging to its **processes/threads**.
+
+This version will also be much cleaner visually because **every ASCII diagram is inside a `text` code block**, so GitHub won't crush the spacing or put everything on one line.
