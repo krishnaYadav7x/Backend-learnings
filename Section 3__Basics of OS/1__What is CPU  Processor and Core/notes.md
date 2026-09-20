@@ -54,78 +54,131 @@ Processor → A general term for a processing chip/unit.
 For basic understanding, remember:
 
 CPU ≈ Processor
-3. 🔲 What is a Core?
 
-A core is an individual processing unit inside a CPU.
 
-A CPU can contain multiple cores.
 
-For example:
 
-CPU / Processor
-│
-├── Core 1
-├── Core 2
-├── Core 3
-└── Core 4
+🧠 CPU Cores & How Multiple Tasks Run
 
-This is called a 4-core CPU.
+A CPU core is a processing unit that executes instructions.
+Each core can execute its own work independently.
 
-Each core can independently execute instructions.
+🧠 Example: 4-Core CPU
 
-4. 🔀 Single-Core vs Multi-Core
-Single-Core CPU
-CPU
-└── Core 1
+Suppose your computer has 4 CPU cores:
 
-A single-core CPU has one processing core.
+🧠 CPU
+├── ⚡ Core 1
+├── ⚡ Core 2
+├── ⚡ Core 3
+└── ⚡ Core 4
 
-Multi-Core CPU
-CPU
-├── Core 1
-├── Core 2
-├── Core 3
-└── Core 4
+For a simple understanding, you can think of the total CPU capacity as:
 
-A multi-core CPU has multiple processing cores, allowing it to handle multiple tasks concurrently.
+Core 1 → ~25%
+Core 2 → ~25%
+Core 3 → ~25%
+Core 4 → ~25%
 
-5. 🚀 Why Do We Need Multiple Cores?
+Total → 100%
 
-Multiple cores allow the CPU to handle multiple tasks more efficiently.
+💡 This 25% per core model is a simplification for understanding CPU usage.
 
-For example:
+⚡ Four CPU-Intensive Tasks
 
-Core 1 → Browser
-Core 2 → VS Code
-Core 3 → Music
-Core 4 → Background Tasks
+Suppose four applications are doing heavy CPU work:
 
-⚠️ Important: Applications are not permanently assigned to specific cores.
+🌐 App A → ⚡ Core 1 → ~25%
+💻 App B → ⚡ Core 2 → ~25%
+🎵 App C → ⚡ Core 3 → ~25%
+🎮 App D → ⚡ Core 4 → ~25%
 
-The Operating System (OS) schedules threads across the available CPU cores.
+All four tasks can execute in parallel.
 
-6. 🧩 CPU vs Core
+🧠 CPU
 
-The relationship is:
+Core 1 → App A  ████████████████
+Core 2 → App B  ████████████████
+Core 3 → App C  ████████████████
+Core 4 → App D  ████████████████
 
-Computer
-   │
-   ▼
-CPU / Processor
-   │
-   ├── Core 1
-   ├── Core 2
-   ├── Core 3
-   └── Core 4
-Term	Meaning
-CPU	Central Processing Unit that executes instructions
-Processor	General term for a processing chip/unit
-Core	Individual processing unit inside a CPU
-Multi-Core CPU	A CPU containing multiple cores
-⭐ Remember
+             CPU ≈ 100%
+➕ What About a 5th App?
 
-CPU/Processor = Overall processing chip
-Core = Individual processing unit inside the CPU
+Now suppose App E also needs a lot of CPU.
+
+You can still open App E.
+
+📱 Open App E
+      ↓
+🧩 Process Created
+      ↓
+⚙️ OS Scheduler
+
+But if all four cores are already fully occupied, App E cannot execute on a free core at that exact moment.
+
+There is no fifth core available.
+
+🧠 CPU
+
+Core 1 → App A  ████████████████
+Core 2 → App B  ████████████████
+Core 3 → App C  ████████████████
+Core 4 → App D  ████████████████
+
+App E → ⏳ Waiting for CPU time
+🔄 Then How Does App E Run?
+
+The OS scheduler can share CPU time between the tasks.
+
+It can temporarily switch one task out and give another task CPU time.
+
+Core 1:
+
+App A → 🔄 → App E → 🔄 → App A → 🔄 → App E
+
+This is done through:
+
+📅 CPU Scheduling
+⏱️ Time Slicing
+🔄 Context Switching
+
+So eventually App E gets CPU time too.
+
+🚫 Open vs Execute
+
+This distinction is very important.
+
+📱 Opening an Application
+
+Opening an application means the OS can create its process and allocate the resources it needs.
+
+📱 Open App
+    ↓
+🧩 Process Created
+⚡ Executing the Application
+
+For the application to perform CPU-intensive work, its process/thread needs CPU time.
+
+🧩 Process
+    ↓
+⚙️ Scheduler
+    ↓
+🧠 CPU Core
+    ↓
+⚡ Execute
+
+So:
+
+💡 You can open more applications than you have CPU cores.
+
+💡 But only as many CPU-intensive tasks as there are available cores can execute in parallel at one exact moment.
+
+💡 If there are more tasks than cores, the OS shares CPU time between them.
+
+
+
+
 
 7. 🧵 Core vs Thread
 
