@@ -1,44 +1,99 @@
-🌱 Environment Variables — Node.js & OS Basics
+🌱 Environment Variables
 
-1. What is an Environment Variable?
+Environment variables are an important concept when working with Operating Systems, processes, terminals, and Node.js.
 
-An environment variable is a key-value pair provided to a process by its environment.
+🧠 What is an Environment Variable?
 
-KEY = VALUE
+An environment variable is a key-value pair available to a process.
 
-Example:
+NAME = VALUE
 
-PORT = 5000
-NODE_ENV = development
+Examples:
+
 USERNAME = krishna
+OS = Windows_NT
+NUMBER_OF_PROCESSORS = 12
+PATH = C:\Program Files\nodejs;...
 
-A program can read these values while it is running.
+A variable can contain a normal value or a path/configuration value.
 
-2. Why Do We Use Environment Variables?
+⚙️ Environment Belongs to a Process
 
-Environment variables are mainly used for:
+A running process has its own environment.
 
-⚙️ Configuration
+Computer
+│
+├── VS Code Process
+│     └── Environment
+│
+├── Chrome Process
+│     └── Environment
+│
+└── Node.js Process
+      └── Environment
 
-🔐 Sensitive values such as API keys and passwords
+The environments of different processes are not one shared global environment.
 
-🌍 Environment-specific settings
+👨‍👦 Parent → Child Environment Inheritance
 
-🛠️ System/tool configuration
+When a parent process creates a child process, the child normally inherits the environment provided by the parent.
 
-Example:
+Parent Process
+Environment
+├── PATH
+├── USERNAME
+├── MY_VAR
+└── ...
+       │
+       │ inherited when child starts
+       ▼
+Child Process
+Environment
+├── PATH
+├── USERNAME
+├── MY_VAR
+└── ...
+Important
 
-PORT=5000
-DB_URL=mongodb://localhost:27017/mydb
-API_KEY=abc123
+The child gets the environment when it is created.
 
-Instead of hard-coding these values directly into the program.
+It is not continuously synchronized with the parent.
 
-Config = settings that control how an application or system behaves.
+Parent
+MY_VAR = hello
+     │
+     ▼
+Child
+MY_VAR = hello
 
-3. process.env in Node.js
+Child changes MY_VAR → "bye"
 
-Node.js provides environment variables through:
+Parent
+MY_VAR = hello   ← unchanged
+
+Child environment is independent after process creation.
+
+🔗 Environment Inheritance Chain
+
+Environment can be passed through multiple processes:
+
+Windows / Initial Environment
+          ↓
+      Git Bash
+          ↓
+       Node.js
+          ↓
+    process.env
+
+For example, when you run:
+
+node app.js
+
+Git Bash creates Node, and Node receives the environment available to it.
+
+🟢 process.env in Node.js
+
+Node.js provides the current process's environment through:
 
 process.env
 
@@ -46,387 +101,193 @@ Example:
 
 console.log(process.env);
 
-process.env is an object-like collection of environment variables.
-
-You can access a specific variable:
+Access a particular variable:
 
 console.log(process.env.PATH);
 console.log(process.env.USERNAME);
 
-If you create:
+If a variable doesn't exist:
 
-num=50
-
-and export it from Bash:
-
-export num=50
-
-Node can access it:
-
-console.log(process.env.num);
+console.log(process.env.myName);
 
 Output:
 
-50
+undefined
+🖥️ Environment in System Informer
 
-4. Environment Variables Are Key-Value Pairs
+System Informer can show the environment attached to a running process.
 
-Think of the environment as a collection of:
+node.exe
+   │
+   └── Environment
+        ├── Process
+        ├── User
+        └── System
 
-Key                  Value
-────────────────────────────────────────
-USERNAME             krishna
-OS                   Windows_NT
-NUMBER_OF_PROCESSORS 12
-PATH                 C:\...\nodejs;C:\...
-PS1                  <Bash prompt configuration>
-
-Node exposes these values through:
+This lets you see the environment at the OS/process level, while:
 
 process.env
 
-5. Parent Process and Child Process
+lets Node.js access that environment from JavaScript.
 
-A process is a running program.
+👤 User vs 🖥️ System Environment
 
-When one process starts another process:
+Windows provides environment configuration at different levels.
 
-Parent Process
-      │
-      ↓
-Child Process
+User Variables
 
-Example:
+Associated with a particular Windows user.
 
-Git Bash
-   │
-   │ runs
-   ↓
-node app.js
+User
+├── TEMP
+├── APPDATA
+├── USERPROFILE
+└── myName
+System Variables
 
-Here:
+Configured at the machine/system level.
 
-Git Bash → parent
+System
+├── OS
+├── NUMBER_OF_PROCESSORS
+├── SystemRoot
+└── Path
 
-Node.js → child
+These values can contribute to the environment given to processes.
 
-A child process normally inherits environment variables from its parent.
+➕ Creating Environment Variables
 
-Git Bash
-   │
-   │ environment variables
-   ↓
-Node.js
-   │
-   ↓
-process.env
-
-So if Bash has:
-
-export num=50
-
-and then starts:
-
-node app.js
-
-Node can read:
-
-process.env.num
-
-6. export in Bash
-
-This:
-
-num=50
-
-creates a shell variable.
-
-But to make it available to child processes:
-
-export num=50
-
-Now programs started from that shell can inherit it.
-
-Example:
-
-export num=50
-node app.js
-
-Then:
-
-console.log(process.env.num);
-
-Output:
-
-50
-
-7. Temporary vs Persistent Environment Variables
-
-Current Shell Only
-
-export num=50
-
-This affects the current Bash session and processes started from it.
-
-If you close the shell, the variable is normally gone.
-
-Available Whenever Git Bash Starts
-
-Put:
-
-export num=50
-
-inside:
-
-~/.bashrc
-
-Then Bash reads .bashrc when it starts.
-
-You can reload it without reopening Bash:
-
-source ~/.bashrc
-
-After that:
-
-echo $num
-
-gives:
-
-50
-
-8. .bashrc
-
-.bashrc is a Bash startup/configuration file.
-
-It can contain things such as:
-
-export num=50
-
-aliases:
-
-alias source="source ~/.bashrc"
-
-and prompt configuration such as:
-
-PS1="..."
-
-So:
-
-Open Git Bash
-      ↓
-Bash reads ~/.bashrc
-      ↓
-Variables/configuration are loaded
-      ↓
-Shell is ready
-
-9. PS1 — An Environment Variable You Saw
-
-You changed the Git Bash prompt earlier.
-
-PS1 controls the appearance of the Bash prompt.
+You can create your own variables.
 
 For example:
 
-export PS1="MY SHELL $ "
+myName = krishna
+learning = backend
+num = 50
 
-The prompt becomes:
+Then Node can access them:
 
-MY SHELL $
+console.log(process.env.myName);
+🐚 Using export in Bash
 
-When Node is started from that Bash environment, PS1 can also appear in:
+In Git Bash:
 
-process.env
+export myName="krishna"
 
-So PS1 is an example of a variable used by the shell itself.
+Now the current Bash process has:
 
-10. Three Environment Levels You Observed
+myName = krishna
 
-In System Informer, you saw:
+A child process created from it can inherit the variable:
 
-Process
-User
-System
-
-These are useful ways to understand where environment values come from.
-
-Process
-
-Process environment = the environment available to a particular running process.
-
-For example, your Node process had variables such as:
-
-PATH
-PS1
-PWD
-SHELL
-USERNAME
-TEMP
-
-and other values.
-
-This is the environment that the Node process can access through:
-
-process.env
-
-User
-
-User environment variables are associated with your Windows user account.
-
-They are available to applications/processes started for that user.
-
-Example:
-
-MY_VARIABLE = hello
-
-System
-
-System environment variables are machine-wide settings.
-
-They are available to processes running on the system, subject to Windows/user permissions and process creation.
-
-Example:
-
-System PATH
-
-11. What Happens When a Process Starts?
-
-A simplified model:
-
-Windows
-   │
-   ├── System Environment
-   │
-   └── User Environment
-           │
-           ↓
-       Shell / Bash
-           │
-           │ modifies/adds variables
-           ↓
-       Node.js Process
-           │
-           ↓
-       process.env
-
-The Node process receives an environment for that process.
-
-It can contain values inherited from its parent plus values added/modified by the parent or launcher.
-
-12. What Happened With PATH?
-
-You noticed that PATH did not simply disappear when another PATH value was present.
-
-PATH is a special and very important environment variable.
-
-It contains a list of directories that the shell/OS searches when you run commands.
-
-Example:
-
-C:\Users\kris9\bin;
-C:\Program Files\nodejs;
-C:\Program Files\Git\cmd
-
-The ; separates Windows PATH entries.
-
-In Bash, you may also modify PATH by adding another directory:
-
-export PATH="$PATH:/new/folder"
-
-This means:
-
-old PATH
-   +
-new folder
-
-You are adding/concatenating, not replacing the old PATH.
-
-If you instead do:
-
-export PATH="/new/folder"
-
-you replace the current shell's PATH with that value, which can cause commands to stop being found.
-
-Important
-
-The effective PATH seen by a process can contain values originating from the Windows user/system environment and values modified by the shell or launcher.
-
-So the process view shows the environment the process actually received, rather than three completely separate PATH variables.
-
-13. ORIGINAL_PATH
-
-In your Git Bash environment you also saw:
-
-ORIGINAL_PATH
-
-This is useful because Git Bash can modify PATH for its own environment.
-
-Git Bash may keep the original Windows PATH in another variable such as:
-
-ORIGINAL_PATH
-
-So you can think of it as:
-
-Windows PATH
-     ↓
-Git Bash modifies/prepares PATH
-     ↓
-Node receives the resulting PATH
-
-The exact variables created by Git Bash can depend on the installation and shell environment.
-
-14. Environment Variables Are Not Files
-
-An environment variable is not a file sitting inside your project.
-
-It is data associated with a running process/environment.
-
-Environment Variable
-       ↓
-KEY = VALUE
-       ↓
-Process receives it
-       ↓
-Node reads it using process.env
-
-.bashrc is a file that can set environment variables when Bash starts, but the variable itself is part of the running shell/process environment.
-
-15. Example: Complete Flow
-
-Bash
-
-export num=50
-
-Start Node
-
-node app.js
-
-Node
-
-console.log(process.env.num);
-
-Result
-
-50
-
-Flow:
-
-.bashrc
-   │
-   │ export num=50
-   ↓
 Git Bash
-   │
-   │ starts
-   ↓
+myName = krishna
+      │
+      │ creates
+      ▼
 Node.js
-   │
-   ↓
-process.env.num
-   │
-   ↓
-"50"
+process.env.myName
+      │
+      ▼
+"krishna"
 
-🧠 Final Overview
+Check it in Bash:
 
-An environment variable is a key-value setting available to a running process. Its purpose is to provide the process with useful configuration and environmental information without putting every value directly inside the program. You observed that a process's environment can contain many values such as PATH, PS1, PWD, USERNAME, TEMP, processor information, and custom variables you create yourself. These values can come from the Windows User/System environment, from a parent process such as Git Bash, or be added/modified before a process starts. When Git Bash runs node app.js, Node becomes a child process and normally inherits the exported environment from Bash. Node exposes the environment it received through process.env, which behaves like an object of key-value pairs. PATH is a special example because it contains multiple directories and can be extended by concatenating another path rather than replacing the existing value. In short: the environment is information/configuration supplied to a process, and process.env is how Node.js accesses that environment.
+echo $myName
+🪟 Using setx on Windows
+
+You can create a persistent Windows User environment variable from Bash:
+
+setx MY_VARIABLE "hello"
+
+This stores the variable for future processes.
+
+Important:
+
+setx
+  ↓
+Persistent Windows User Variable
+  ↓
+New processes can receive it
+
+An already-running process doesn't automatically get the new variable.
+
+⏱️ Why Restarting Matters
+
+Suppose you create:
+
+myName = krishna
+
+while VS Code is already running.
+
+The existing process may still have its old environment.
+
+Windows User Environment
+myName = krishna
+       │
+       │ created later
+       ▼
+Existing VS Code
+       │
+       ▼
+Existing Terminal
+       │
+       ▼
+Node
+       │
+       └── myName may be undefined
+
+Starting new processes allows the updated environment to be inherited.
+
+Environment changes generally affect newly created processes, not already-running processes.
+
+📌 PATH
+
+PATH is one of the most important environment variables.
+
+It contains directories where executable programs can be found.
+
+Example:
+
+PATH =
+C:\Program Files\nodejs
+;
+C:\Program Files\Git\cmd
+;
+...
+
+That's why you can type:
+
+node
+
+instead of writing the complete path to node.exe.
+
+🔥 Why Are We Learning Environment Variables?
+
+Environment variables connect several concepts you're learning:
+
+Operating System
+       ↓
+     Process
+       ↓
+    Environment
+       ↓
+   Child Process
+       ↓
+   Node.js
+       ↓
+  process.env
+
+They are also very important in backend development because applications often need configuration such as:
+
+PORT
+DATABASE_URL
+API_URL
+NODE_ENV
+API_KEY
+
+Instead of hardcoding configuration directly into source code.
+
+🧠 Remember
+
+An environment variable is a key-value configuration available to a process. Every process has its own environment. When a parent creates a child, the child normally inherits the parent's environment at creation time. The child then has its own environment and can modify it without changing the parent's environment. In Node.js, we access the current process's environment through process.env. We are learning environment variables because they connect OS process management with Node.js and are heavily used for application configuration in backend development.
