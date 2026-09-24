@@ -10,39 +10,12 @@ it looks simple, but Bash goes through a command-resolution process.
 
 Bash roughly checks:
 
-You type a command
-        │
-        ▼
-     Alias?
-     /    \
-   Yes     No
-    │       │
- Execute    ▼
-         Function?
-         /      \
-       Yes       No
-        │         │
-     Execute      ▼
-             Shell Built-in?
-              /          \
-            Yes           No
-             │             │
-          Execute          ▼
-                    Hash Table?
-                     /       \
-                  Found     Not Found
-                    │           │
-                 Execute        ▼
-                          Search PATH
-                               │
-                               ▼
-                           Executable
-                               │
-                               ▼
-                              OS
-                               │
-                               ▼
-                            Process
+
+
+Alias → Function → Built-in → Hash → PATH → Executable → OS → Process
+
+
+
 ⭐ Remember
 Alias → Function → Built-in → Hash → PATH → Executable → OS
 2. 🏷️ Alias & Function
