@@ -1,3 +1,5 @@
+Shebang is the #! at the beginning of a script that tells the operating system which interpreter should run that file.
+
 #!/usr/bin/env node — Why is it important?
 
 It looks like a comment, but it has a special meaning to the operating system:
