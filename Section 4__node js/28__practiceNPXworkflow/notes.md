@@ -1,0 +1,1 @@
+The CLI file that npx executes may need a hashbang so the operating system knows which interpreter should run that file.
