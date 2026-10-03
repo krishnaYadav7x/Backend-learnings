@@ -1,0 +1,26 @@
+5:34:09 am
+ENOENT: no such file or directory, open 'C:\Backend\Section 4__node js\23__Writing to a File Using Node.js\nature.jjpg' 
+ Error: ENOENT: no such file or directory, open 'C:\Backend\Section 4__node js\23__Writing to a File Using Node.js\nature.jjpg'
+    at async open (node:internal/fs/promises:640:25)
+    at async readFile (node:internal/fs/promises:1290:14)
+    at async file:///C:/Backend/Section%204__node%20js/23__Writing%20to%20a%20File%20Using%20Node.js/app.js:10:25
+5:39:08 am
+ENOENT: no such file or directory, open 'C:\Backend\Section 4__node js\23__Writing to a File Using Node.js\nature.jjpg' 
+ Error: ENOENT: no such file or directory, open 'C:\Backend\Section 4__node js\23__Writing to a File Using Node.js\nature.jjpg'
+    at async open (node:internal/fs/promises:640:25)
+    at async readFile (node:internal/fs/promises:1290:14)
+    at async file:///C:/Backend/Section%204__node%20js/23__Writing%20to%20a%20File%20Using%20Node.js/app.js:10:25
+
+5:39:54 am
+ENOENT: no such file or directory, open 'C:\Backend\Section 4__node js\23__Writing to a File Using Node.js\nature.jjpg' 
+ Error: ENOENT: no such file or directory, open 'C:\Backend\Section 4__node js\23__Writing to a File Using Node.js\nature.jjpg'
+    at async open (node:internal/fs/promises:640:25)
+    at async readFile (node:internal/fs/promises:1290:14)
+    at async file:///C:/Backend/Section%204__node%20js/23__Writing%20to%20a%20File%20Using%20Node.js/app.js:10:25
+
+5:40:48 am
+ENOENT: no such file or directory, open 'C:\Backend\Section 4__node js\23__Writing to a File Using Node.js\nature.jjpg' 
+ Error: ENOENT: no such file or directory, open 'C:\Backend\Section 4__node js\23__Writing to a File Using Node.js\nature.jjpg'
+    at async open (node:internal/fs/promises:640:25)
+    at async readFile (node:internal/fs/promises:1290:14)
+    at async file:///C:/Backend/Section%204__node%20js/23__Writing%20to%20a%20File%20Using%20Node.js/app.js:10:25
