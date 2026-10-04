@@ -1,9 +1,16 @@
-// const arr = [2,4,6,5]
-// let output = 0
-// for(let i=0; i<arr.length; i++){
-//   output+=arr[i]*(10**i)
-// }
-// console.log(output);
+// Base 10:
+
+// 4   5   2   1
+// │   │   │   │
+// 10³ 10² 10¹ 10⁰
+
+
+const arr = [2,4,6,5]
+let output = 0
+for(let i=0; i<arr.length; i++){
+  output+=arr[i]*(10**i)
+}
+console.log(output);
 
 
 
