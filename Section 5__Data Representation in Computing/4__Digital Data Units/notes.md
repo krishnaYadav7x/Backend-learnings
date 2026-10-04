@@ -15,10 +15,10 @@ There are two standards for measuring digital storage:
 
 SI (Decimal)  IEC (Binary) 
 
-| KB = 1,000 bytes  KiB = 1,024 bytes 
-| MB = 1,000 KB  MiB = 1,024 KiB 
-| GB = 1,000 MB  GiB = 1,024 MiB 
-| TB = 1,000 GB  TiB = 1,024 GiB 
+1 KB = 1,000 bytes  KiB = 1,024 bytes 
+1 MB = 1,000 KB  MiB = 1,024 KiB 
+1 GB = 1,000 MB  GiB = 1,024 MiB 
+1 TB = 1,000 GB  TiB = 1,024 GiB 
 
 ---
 
