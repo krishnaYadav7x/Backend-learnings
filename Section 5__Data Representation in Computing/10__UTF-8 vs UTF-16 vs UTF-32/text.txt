@@ -1,0 +1,23 @@
+🔵 UTF-8
+
+Size: 1–4 bytes per character
+Memory: Most efficient for English/mixed text
+ASCII: Compatible — ASCII uses 1 byte
+Speed: Good, but character indexing can be slower
+
+🟣 UTF-16
+
+Size: 2–4 bytes per character
+Memory: Better than UTF-32, but usually larger than UTF-8 for English
+ASCII: Not byte-compatible
+Speed: Good; convenient for systems based on 16-bit code units
+Best for: Environments that internally use UTF-16
+
+
+🟢 UTF-32
+
+Size: Exactly 4 bytes per Unicode code point
+Memory: Highest usage
+ASCII: Uses 4 bytes
+Speed: Simple/direct code-point access
+
