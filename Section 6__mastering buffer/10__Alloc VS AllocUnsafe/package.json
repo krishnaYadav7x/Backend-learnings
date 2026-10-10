@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "debug":"node --inspect app.js"
+  },
+  "type": "module"
+}
