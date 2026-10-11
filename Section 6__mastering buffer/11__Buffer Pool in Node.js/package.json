@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "debug":"node --watch --inspect-brk app.js"
+  },
+  "type": "module"
+}
