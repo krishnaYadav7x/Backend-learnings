@@ -4,6 +4,6 @@
   },
   "type": "module",
   "scripts": {
-    "debug": "node --inspect-brk app.js"
+    "debug": "node --watch --inspect-brk p.js"
   }
 }
