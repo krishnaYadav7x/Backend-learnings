@@ -27,10 +27,10 @@ view.setInt8(2,227)
 view.setInt8(3,129)
 // view.setInt8(0,45)
 console.log(view.getInt8(0));  //getInt read value as signed
-console.log(view.getUint8(0));  //getInt read value as unsigned
-console.log(view.getUint8(1)); //127  //getInt read value as unsigned
+console.log(view.getUint8(0));  //getUint read value as unsigned
+console.log(view.getUint8(1)); //127  //getUint read value as unsigned
 console.log(view.getInt8(1)); //127  //getInt read value as signed
-console.log(view.getUint8(2)); //127  //getInt read value as unsigned
+console.log(view.getUint8(2)); //127  //getUint read value as unsigned
 console.log(view.getInt8(2)); //127  //getInt read value as signed
 console.log(view.getInt8(3));
 console.log(view.getUint8(3));
