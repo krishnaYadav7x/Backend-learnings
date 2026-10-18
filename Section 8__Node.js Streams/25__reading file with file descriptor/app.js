@@ -20,3 +20,11 @@ fs.read(fd2,{
   console.log(buffData);
   console.log(buffData.toString());
 })
+
+
+
+
+
+
+
+

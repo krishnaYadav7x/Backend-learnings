@@ -17,3 +17,12 @@
 - offset specifies where to start writing in the buffer.
 - buffData.toString() converts the buffer's contents into a string.
 - Your code is missing length, which is required when using the options-object form of fs.read().
+
+**--------------------------------------**
+
+3. When is a file descriptor useful?
+- Multiple operations: Keep a file open while performing multiple reads or writes.
+- Precise control: Read or write at specific positions in a file.
+- Performance: Avoid repeated open/close overhead when performing many operations.
+- Low-level I/O: Work directly with file operations rather than using higher-level convenience methods.
+
