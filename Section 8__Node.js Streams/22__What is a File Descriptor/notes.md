@@ -1,0 +1,1 @@
+## A file descriptor (FD) is a small integer that an operating system uses to identify an open file or another I/O resource associated with a process.
