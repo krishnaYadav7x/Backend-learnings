@@ -75,3 +75,43 @@
 
   * Phone → Radio waves → Mobile tower → Operator's network → Internet server.
   * The server's response travels back through the network and tower to our phone.
+
+---
+
+* **Mobile Tower (3G, 4G, 5G)**
+
+  * Towers provide wireless connectivity to mobile devices using radio waves.
+  * Each generation uses different mobile communication technologies.
+
+* **Fiber Optic Cables**
+
+  * Fiber cables carry data over long distances using light signals, not electricity.
+  * Undersea fiber cables connect countries and carry internet traffic.
+  * Fiber cables connect to the operator's network and may connect to mobile towers.
+
+* **FTTH and FTTT**
+
+  * FTTH (Fiber to the Home): Fiber cables connect directly to a home.
+  * FTTT (Fiber to the Tower): Fiber cables connect to a mobile tower.
+
+* **How a Tower Communicates with a Mobile**
+
+  * The tower transmits and receives radio signals.
+  * An antenna inside the mobile phone receives and transmits these signals.
+  * A modem converts the received signals into digital data and digital data into signals for transmission.
+
+* **How the ISP Manages Mobile Internet**
+
+  * The ISP or mobile network operator manages its network and towers.
+  * When mobile data is activated, the network authenticates the SIM.
+  * The network assigns an IP address to the device or its data connection.
+  * The operator's systems track the user's data plan, usage, and expiry.
+
+* **How Data Travels**
+
+  * The phone converts digital data into cellular radio signals and sends them to a tower.
+  * The tower forwards the data through the operator's network, often using fiber-optic cables.
+  * The request reaches the destination server, such as YouTube.
+  * The server sends a response back through the network.
+  * The tower transmits the response to the phone using radio signals.
+  * The phone converts the received signals into digital data that apps can use.
