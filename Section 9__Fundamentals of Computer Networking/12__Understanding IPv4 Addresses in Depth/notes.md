@@ -138,3 +138,20 @@ A router commonly uses NAT (Network Address Translation) to allow devices with p
 * Home network's public IP: Assigned by the ISP
 
 **Remember:** An IP address identifies a network interface, and a subnet mask helps determine which part of the address identifies the network.
+
+
+---
+
+1. ISP assigns an IP address to the router
+
+Your Internet Service Provider (ISP) typically assigns a public IP address to your router's internet-facing connection.
+This allows your home network to communicate with the internet.
+
+2. Router assigns IP addresses to connected devices
+
+Your router typically assigns private IP addresses to devices connected to its local network using DHCP.
+For example, your laptop might receive 192.168.1.10, while your phone receives 192.168.1.11.
+
+---
+
+Data is represented as bits (0s and 1s), transmitted through the air using radio waves, and transmitted through fiber-optic cables using light signals. Network equipment converts between these signal forms as needed.
