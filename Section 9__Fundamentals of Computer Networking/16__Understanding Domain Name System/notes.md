@@ -56,3 +56,27 @@
 * ICANN: Coordinates the DNS root and global domain-name system.
 * VeriSign: Operates the registry for .com and .net.
 * GoDaddy: A domain registrar where people can register domain names.
+
+---
+
+## What are the different levels?
+
+**Root (.)**
+* The highest level of the DNS hierarchy.
+* Represented by a dot (.).
+* Root DNS servers help direct queries to the appropriate TLD name servers.
+
+**Top-Level Domain (TLD)**
+* The level immediately below the root.
+* Examples: .com, .org, .in, .net.
+* TLD name servers help direct queries to the authoritative name servers for specific domains.
+
+**Second-Level Domain**
+* The name registered under a TLD.
+* Example: google in google.com.
+* You can register a domain name through a domain registrar.
+
+**Subdomain**
+* A domain created under another domain.
+* Example: www in www.google.com.
+* Other examples include mail.google.com and blog.google.com.
