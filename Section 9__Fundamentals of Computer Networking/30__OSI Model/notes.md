@@ -119,6 +119,11 @@
 
 **Data Unit:** Frame.
 
+**IP address helps identify where data needs to go across networks, while MAC address helps deliver the frame to the correct network interface on the local network link.**
+
+* Destination IP = Server's IP address.
+* Destination MAC = Usually your router's MAC address (the next hop), not the server's MAC address.
+
 ### Layer 1 – Physical Layer
 
 * Responsible for transmitting raw bits (0s and 1s).
