@@ -1,0 +1,9 @@
+body{
+  font-family: cursive;
+}
+p{
+  visibility: hidden;
+}
+.show{
+  visibility: visible;
+}
