@@ -1,0 +1,14 @@
+{
+  "name": "1__intro-to-express-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch app.js"
+  },
+  "keywords": [],
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
