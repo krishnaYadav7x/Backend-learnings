@@ -1,0 +1,14 @@
+{
+  "name": "6__adding-route-specific-middleware",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "node --watch p.js"
+  },
+  "keywords": [],
+  "type": "module",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
