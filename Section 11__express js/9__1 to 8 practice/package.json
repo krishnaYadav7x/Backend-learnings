@@ -1,0 +1,14 @@
+{
+  "name": "9__1-to-8-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app6.js",
+  "scripts": {
+    "dev": "node --watch middlewares/app6.js"
+  },
+  "keywords": [],
+  "type": "module",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
