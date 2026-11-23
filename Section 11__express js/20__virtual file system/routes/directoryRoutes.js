@@ -11,9 +11,9 @@ router.get('{/:id}',(req,res)=>{
      const files =  directoryData.files.map((fileId)=>{
       return filesData.find((file)=>file.id===fileId)
     })
-    res.json({...directoryData,files});
+    res.json({...directoryData,files})
   }else{
-    const directoryData = directoriesData.find((directory) => directory.id===id);
+    const directoryData = directoriesData.find((directory) => directory.id===id)
     res.json(directoryData)
   }
 })
